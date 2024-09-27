@@ -1,45 +1,39 @@
-#### Imports et définition des variables globales
-
-
-#### Fonctions secondaires
-
-
+"""cette fontion permet d'encoder une chaîne de caractères"""
 def artcode_i(s):
-    """retourne la liste de tuples encodant une chaîne de caractères passée en argument selon un algorithme itératif
-
-    Args:
-        s (str): la chaîne de caractères à encoder
-
-    Returns:
-        list: la liste des tuples (caractère, nombre d'occurences)
-    """
-    
-    # votre code ici
-
-    return [ ]
-
+    trtab = str.maketrans('àâãäçèéêëìíîïñòóôõöšùúûüýÿž', 'aaaaceeeeiiiinooooosuuuuyyz')
+    s = s.translate(trtab)
+    if len(s) == 0:
+        return []
+    liste = []
+    compteur = 1
+    lettre = s[0]
+    for i in range(1, len(s)):
+        if s[i] == lettre:
+            compteur += 1
+        else:
+            liste.append((lettre, compteur))
+            lettre = s[i]
+            compteur = 1
+    liste.append((lettre, compteur))
+    return list
 
 def artcode_r(s):
-    """retourne la liste de tuples encodant une chaîne de caractères passée en argument selon un algorithme récursif
-
-    Args:
-        s (str): la chaîne de caractères à encoder
-
-    Returns:
-        list: la liste des tuples (caractère, nombre d'occurences)
-    """
-    
-    # votre code ici
-
-    # cas de base
-    # recherche nombre de caractères identiques au premier
-    # appel récursif
-
-    return []
-    
-
-#### Fonction principale
-
+    trtab = str.maketrans('àâãäçèéêëìíîïñòóôõöšùúûüýÿž', 'aaaaceeeeiiiinooooosuuuuyyz')
+    s = s.translate(trtab)
+    if len(s) == 0:
+        return []
+    liste = []
+    compteur = 1
+    lettre = s[0]
+    for i in range(1, len(s)):
+        if s[i] == lettre:
+            compteur += 1
+        else:
+            liste.append((lettre, compteur))
+            lettre = s[i]
+            compteur = 1
+    liste.append((lettre, compteur))
+    return liste
 
 def main():
     print(artcode_i('MMMMaaacXolloMM'))
